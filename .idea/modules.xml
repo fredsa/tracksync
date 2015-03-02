@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Track&amp;Sync.iml" filepath="$PROJECT_DIR$/Track&amp;Sync.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fredsa.tracksync.iml" filepath="$PROJECT_DIR$/fredsa.tracksync.iml" />
     </modules>
   </component>
 </project>
