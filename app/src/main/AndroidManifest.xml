@@ -12,7 +12,6 @@
 
         <activity
             android:name=".SettingsActivity"
-            android:keepScreenOn="true"
             android:label="@string/app_name"
             android:screenOrientation="reversePortrait">
             <intent-filter>

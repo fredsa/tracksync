@@ -2,6 +2,8 @@ package sauer.tracksync;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -36,7 +38,11 @@ public class TrackIntentService extends IntentService {
         Log.w(TAG, "  extra: " + intentAction);
         if (intentAction.equals(Intent.ACTION_USER_PRESENT)) {
             Date now = new Date();
-            Log.w(TAG, "PHONE UNLOCKED AT " + now);
+            Log.w(TAG, "  PHONE UNLOCKED AT: " + now);
+
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+            String smsNumber = sharedPref.getString(SettingsActivity.SMS_NUMBER, null);
+            Log.w(TAG, "  SMS NUMBER: " + smsNumber);
         }
     }
 }

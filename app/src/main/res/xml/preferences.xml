@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <sauer.tracksync.MyEditTextPreference
+        android:key="sms_number"
+        android:summary="Phone number to send SMS notifications to"
+        android:hint="555 123-4567"
+        android:title="SMS number"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:inputType="phone"
+
+        />
+
+</PreferenceScreen>
