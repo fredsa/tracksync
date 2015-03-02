@@ -3,9 +3,13 @@ package sauer.tracksync;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
+
+import org.apache.http.protocol.HTTP;
 
 import java.util.Date;
 
@@ -20,7 +24,7 @@ public class TrackIntentService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-       Log.w(TAG, "onCreate() called");
+        Log.w(TAG, "onCreate() called");
     }
 
     @Override
@@ -38,11 +42,17 @@ public class TrackIntentService extends IntentService {
         Log.w(TAG, "  extra: " + intentAction);
         if (intentAction.equals(Intent.ACTION_USER_PRESENT)) {
             Date now = new Date();
-            Log.w(TAG, "  PHONE UNLOCKED AT: " + now);
+            String message = "  PHONE UNLOCKED AT: " + now;
+            Log.w(TAG, message);
 
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
             String smsNumber = sharedPref.getString(SettingsActivity.SMS_NUMBER, null);
             Log.w(TAG, "  SMS NUMBER: " + smsNumber);
+            sendSms(smsNumber, message);
         }
+    }
+
+    private void sendSms(String smsNumber, String message) {
+        SmsManager.getDefault().sendTextMessage(smsNumber, null, message, null, null);
     }
 }
